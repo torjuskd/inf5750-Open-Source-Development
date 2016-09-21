@@ -1,0 +1,5 @@
+/home/user/Documents/inf5750/inf5750-Open-Source-Development/assignment2_torjuskd/assignment2-api/src/main/java/no/uio/inf5750/assignment2/model/Student.java
+/home/user/Documents/inf5750/inf5750-Open-Source-Development/assignment2_torjuskd/assignment2-api/src/main/java/no/uio/inf5750/assignment2/model/Course.java
+/home/user/Documents/inf5750/inf5750-Open-Source-Development/assignment2_torjuskd/assignment2-api/src/main/java/no/uio/inf5750/assignment2/dao/StudentDAO.java
+/home/user/Documents/inf5750/inf5750-Open-Source-Development/assignment2_torjuskd/assignment2-api/src/main/java/no/uio/inf5750/assignment2/dao/CourseDAO.java
+/home/user/Documents/inf5750/inf5750-Open-Source-Development/assignment2_torjuskd/assignment2-api/src/main/java/no/uio/inf5750/assignment2/service/StudentSystem.java

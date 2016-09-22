@@ -32,15 +32,15 @@ public interface CourseDAO
      * Returns a course with a specific course code.
      * 
      * @param courseCode the course code of the course to return.
-     * @return the course code or null if it doesn't exist.
+     * @return the course or null if it doesn't exist.
      */
     Course getCourseByCourseCode( String courseCode );
 
     /**
      * Returns a course with a specific name.
      * 
-     * @param courseCode the course code of the course to return.
-     * @return the course code or null if it doesn't exist.
+     * @param name the course code of the course to return.
+     * @return the course or null if it doesn't exist.
      */
     Course getCourseByName( String name );
 

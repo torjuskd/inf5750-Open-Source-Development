@@ -1,10 +1,16 @@
 package no.uio.inf5750.assignment2.service.impl;
 
+import no.uio.inf5750.assignment2.dao.CourseDAO;
+import no.uio.inf5750.assignment2.dao.StudentDAO;
+import no.uio.inf5750.assignment2.dao.hibernate.HibernateCourseDAO;
 import no.uio.inf5750.assignment2.model.Course;
 import no.uio.inf5750.assignment2.model.Student;
 import no.uio.inf5750.assignment2.service.StudentSystem;
 import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Collection;
@@ -13,6 +19,13 @@ public class DefaultStudentSystem implements StudentSystem{
     static Logger logger = Logger.getLogger(DefaultStudentSystem.class);
     private SessionFactory sessionFactory;
 
+    @Autowired
+    private CourseDAO courseDao;
+
+    @Autowired
+    private StudentDAO studentDao;
+
+    //@Component("defaultStudentSystem")
     public void setSessionFactory(SessionFactory sessionFactory){
         this.sessionFactory = sessionFactory;
     }
@@ -25,7 +38,7 @@ public class DefaultStudentSystem implements StudentSystem{
      * @return the generated id of the added course.
      */
     public int addCourse(String courseCode, String name){
-        throw new NotImplementedException();
+        return courseDao.saveCourse(new Course(courseCode, name));
     }
 
     /**
@@ -36,7 +49,9 @@ public class DefaultStudentSystem implements StudentSystem{
      * @param name the name to update.
      */
     public void updateCourse(int courseId, String courseCode, String name){
-        throw new NotImplementedException();
+        Course toUpdate = courseDao.getCourse(courseId);
+        courseDao.delCourse(toUpdate);
+        courseDao.saveCourse(new Course(courseCode, name)); //this might be the stupid way to do this, maybe look at this later.
     }
 
     /**
@@ -46,7 +61,7 @@ public class DefaultStudentSystem implements StudentSystem{
      * @return the course or null if it doesn't exist.
      */
     public Course getCourse(int courseId){
-        throw new NotImplementedException();
+        return courseDao.getCourse(courseId);
     }
 
     /**
@@ -56,7 +71,7 @@ public class DefaultStudentSystem implements StudentSystem{
      * @return the course code or null if it doesn't exist.
      */
     public Course getCourseByCourseCode(String courseCode){
-        throw new NotImplementedException();
+        return courseDao.getCourseByCourseCode(courseCode);
     }
 
     /**
@@ -66,7 +81,7 @@ public class DefaultStudentSystem implements StudentSystem{
      * @return the course code or null if it doesn't exist.
      */
     public Course getCourseByName(String name){
-        throw new NotImplementedException();
+        return courseDao.getCourseByName(name);
     }
 
     /**
@@ -75,7 +90,7 @@ public class DefaultStudentSystem implements StudentSystem{
      * @return all courses or an empty Collection if no course exists.
      */
     public Collection<Course> getAllCourses(){
-        throw new NotImplementedException();
+        return courseDao.getAllCourses();
     }
 
     /**
@@ -85,7 +100,8 @@ public class DefaultStudentSystem implements StudentSystem{
      * @param courseId the id of the course to delete.
      */
     public void delCourse(int courseId){
-        throw new NotImplementedException();
+        Course del = courseDao.getCourse(courseId);
+        courseDao.delCourse(del);
     }
 
     /**

@@ -21,8 +21,25 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * implements web api interfaces at /api/student, /api/student/{student}/location, /api/course
  */
+@Controller
+public class ApiController{
+
+    static Logger logger = Logger.getLogger(ApiController.class);
+
+    @Autowired
+    private StudentSystem studentSystem;
+
+    @RequestMapping(value = "/api/student", method = RequestMethod.GET)
+    @ResponseBody
+    public Collection<Student> getAllStudents()
+    {
+        return studentSystem.getAllStudents();
+    }
+
+}
+/*
 public class ApiController {
-    /*
+
     @RequestMapping(value="/student/{user}", method = RequestMethod.GET)
     @ResponseBody
     public Student getStudentByUsername(@PathVariable String user,
@@ -32,5 +49,8 @@ public class ApiController {
         Student student = studentService.getStudent(user);
         return student;
     }
-    */
+
+
+
 }
+*/

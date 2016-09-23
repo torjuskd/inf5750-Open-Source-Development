@@ -2,5 +2,8 @@
     <wb-module deploy-name="assignment2-deliverable">
         <wb-resource deploy-path="/" source-path="/src/main/java"/>
         <wb-resource deploy-path="/" source-path="/src/test/java"/>
+        <dependent-module archiveName="assignment2-api-1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/assignment2-api/assignment2-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
     </wb-module>
 </project-modules>
